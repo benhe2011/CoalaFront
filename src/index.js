@@ -1,5 +1,4 @@
 import React from "react";
-import ReactImageAnnotate from "react-image-annotate";
 import ReactDOM from "react-dom";
 import AnnotatorWin from "./AnnotatorWin"
 
