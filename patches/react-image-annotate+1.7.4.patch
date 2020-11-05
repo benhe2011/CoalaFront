@@ -1,13 +1,14 @@
 diff --git a/node_modules/react-image-annotate/Annotator/reducers/general-reducer.js b/node_modules/react-image-annotate/Annotator/reducers/general-reducer.js
-index 6cc5507..291bf65 100644
+index 6cc5507..dcebec2 100644
 --- a/node_modules/react-image-annotate/Annotator/reducers/general-reducer.js
 +++ b/node_modules/react-image-annotate/Annotator/reducers/general-reducer.js
-@@ -17,6 +17,38 @@ var getRandomId = function getRandomId() {
+@@ -17,6 +17,40 @@ var getRandomId = function getRandomId() {
    return Math.random().toString().split(".")[1];
  };
  
 +function fetchNextImage() {
 +  // console.log("fetching python localhost");
++  console.log("Trying to fetch next image.")
 +  fetch('http://localhost:5000/nextImage',{
 +    dataType: 'json'
 +  })
@@ -24,6 +25,7 @@ index 6cc5507..291bf65 100644
 +
 +function fetchPrevImage() {
 +  // console.log("fetching python localhost");
++  console.log("Trying to fetch previous image.")
 +  fetch('http://localhost:5000/prevImage',{
 +    dataType: 'json'
 +  })
@@ -41,11 +43,13 @@ index 6cc5507..291bf65 100644
  export default (function (state, action) {
    if (state.allowedArea && state.selectedTool !== "modify-allowed-area" && ["MOUSE_DOWN", "MOUSE_UP", "MOUSE_MOVE"].includes(action.type)) {
      var aa = state.allowedArea;
-@@ -864,14 +896,16 @@ export default (function (state, action) {
+@@ -863,15 +897,17 @@ export default (function (state, action) {
+           case "prev":
              {
                if (currentImageIndex === null) return state;
-               if (currentImageIndex === 0) return state;
+-              if (currentImageIndex === 0) return state;
 -              return setNewImage(state.images[currentImageIndex - 1], currentImageIndex - 1);
++              //if (currentImageIndex === 0) return state;
 +              //return setNewImage(state.images[currentImageIndex - 1], currentImageIndex - 1);
 +              return fetchPrevImage();
              }
@@ -53,8 +57,9 @@ index 6cc5507..291bf65 100644
            case "next":
              {
                if (currentImageIndex === null) return state;
-               if (currentImageIndex === state.images.length - 1) return state;
+-              if (currentImageIndex === state.images.length - 1) return state;
 -              return setNewImage(state.images[currentImageIndex + 1], currentImageIndex + 1);
++              //if (currentImageIndex === state.images.length - 1) return state;
 +              //return setNewImage(state.images[currentImageIndex + 1], currentImageIndex + 1);
 +              return fetchNextImage();
              }
