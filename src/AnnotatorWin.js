@@ -1,5 +1,5 @@
 import React from "react";
-import ReactImageAnnotate from "react-image-annotate";
+import ReactImageAnnotate, {MainLayoutState} from "react-image-annotate";
 
 const AnnotatorWin = (props) => {
   if(props.imgSrc){
@@ -17,6 +17,7 @@ const AnnotatorWin = (props) => {
         }
       ]}
       enabledTools={["create-point", "select"]}
+      onExit={MainLayoutState => console.log(MainLayoutState)}
     />
     );
   }

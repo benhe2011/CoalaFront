@@ -9,7 +9,6 @@ class App extends React.Component{
     this.state = {imgSrc: null}
   }
   
-  
   fileChangedHandler = (event) => {
     const file = event.target.files[0]
     if (file) {

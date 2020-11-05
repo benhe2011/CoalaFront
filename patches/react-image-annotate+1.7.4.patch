@@ -1,0 +1,43 @@
+diff --git a/node_modules/react-image-annotate/Annotator/reducers/general-reducer.js b/node_modules/react-image-annotate/Annotator/reducers/general-reducer.js
+index 6cc5507..6e96637 100644
+--- a/node_modules/react-image-annotate/Annotator/reducers/general-reducer.js
++++ b/node_modules/react-image-annotate/Annotator/reducers/general-reducer.js
+@@ -16,7 +16,37 @@ import getLandmarksWithTransform from "../../utils/get-landmarks-with-transform"
+ var getRandomId = function getRandomId() {
+   return Math.random().toString().split(".")[1];
+ };
+-
++/*
++function fetchNextImage() {
++  // console.log("fetching python localhost");
++  fetch('http://localhost:5000/nextImage',{
++    dataType: 'json'
++  })
++    .then(r => r.json())
++    .then(r => {
++      // console.log(r)
++      const image = r.status.split('\'')[1]
++      return setNewImage(image, currentImageIndex);
++      console.log("Next image fetched.")
++    })
++    .catch(err => console.log(err))
++}
++
++function fetchPrevImage() {
++  // console.log("fetching python localhost");
++  fetch('http://localhost:5000/prevImage',{
++    dataType: 'json'
++  })
++    .then(r => r.json())
++    .then(r => {
++      // console.log(r)
++      const image = r.status.split('\'')[1]
++      return setNewImage(image, currentImageIndex);
++      console.log("Previous image fetched.")
++    })
++    .catch(err => console.log(err))
++}
++*/
+ export default (function (state, action) {
+   if (state.allowedArea && state.selectedTool !== "modify-allowed-area" && ["MOUSE_DOWN", "MOUSE_UP", "MOUSE_MOVE"].includes(action.type)) {
+     var aa = state.allowedArea;
