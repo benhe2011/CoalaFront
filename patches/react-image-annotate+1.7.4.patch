@@ -1,12 +1,12 @@
 diff --git a/node_modules/react-image-annotate/Annotator/reducers/general-reducer.js b/node_modules/react-image-annotate/Annotator/reducers/general-reducer.js
-index 6cc5507..dcebec2 100644
+index 6cc5507..e35841c 100644
 --- a/node_modules/react-image-annotate/Annotator/reducers/general-reducer.js
 +++ b/node_modules/react-image-annotate/Annotator/reducers/general-reducer.js
 @@ -17,6 +17,40 @@ var getRandomId = function getRandomId() {
    return Math.random().toString().split(".")[1];
  };
  
-+function fetchNextImage() {
++export function fetchNextImage() {
 +  // console.log("fetching python localhost");
 +  console.log("Trying to fetch next image.")
 +  fetch('http://localhost:5000/nextImage',{
@@ -23,7 +23,7 @@ index 6cc5507..dcebec2 100644
 +    .catch(err => console.log(err))
 +}
 +
-+function fetchPrevImage() {
++export function fetchPrevImage() {
 +  // console.log("fetching python localhost");
 +  console.log("Trying to fetch previous image.")
 +  fetch('http://localhost:5000/prevImage',{
